@@ -5,7 +5,6 @@ import CSSTransitionGroup from 'react-addons-css-transition-group';
 const Photo = React.createClass({
   render() {
     const { post, i, comments } = this.props;
-    const commentCount = comments[post.code] ? comments[post.code].length : 0;
 
     return (
       <figure className="grid-figure">
@@ -29,7 +28,7 @@ const Photo = React.createClass({
               <Link to={`/view/${post.code}`}>
                 <span className="comment-count">
                   <span className="speech-bubble"></span>
-                  {commentCount}
+                  {comments[post.code] ? comments[post.code].length : 0};
                 </span>
               </Link>
             </div>
@@ -39,9 +38,5 @@ const Photo = React.createClass({
     )
   }
 });
-
-Photo.defaultProps = {
-  comments: {}
-};
 
 export default Photo;
